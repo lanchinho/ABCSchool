@@ -12,6 +12,16 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy("ABC School App", policy =>
+            {
+                policy.WithOrigins(["https://localhost:7089", "http://localhost:5248"])
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();                    
+            });
+        });
+
         builder.Services.AddControllers().AddJsonOptions(options =>
         {
             options.JsonSerializerOptions.WriteIndented = true;
@@ -29,6 +39,7 @@ public class Program
 
         app.UseHttpsRedirection();
 
+        app.UseCors("ABC School App");
         app.UseInfraStructure();
 
         app.UseMiddleware<ErrorHandlingMiddleware>();
