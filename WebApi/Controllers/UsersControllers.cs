@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers;
 [Route("api/[controller]")]
-public class UsersControllers : BaseApiController
+public class UsersController : BaseApiController
 {
     [HttpPost("register")]
     [ShouldHavePermission(SchoolAction.Create, SchoolFeature.Users)]
