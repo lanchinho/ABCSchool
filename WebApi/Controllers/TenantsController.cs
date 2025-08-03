@@ -47,7 +47,7 @@ public class TenantsController : BaseApiController
         return BadRequest(response);
     }
 
-    [HttpPut("updagrade")]
+    [HttpPut("upgrade")]
     [ShouldHavePermission(SchoolAction.UpgradeSubscription, SchoolFeature.Tenants)]
     public async Task<IActionResult> UpgradeTenantSubscriptionAsync([FromBody] UpdateTenantSubscriptionRequest updateTenant)
     {
