@@ -30,7 +30,8 @@ public class TenantService(IMultiTenantStore<ABCSchoolTenantInfo> tenantStore, A
             LastName = createTenant.LastName,
             Email = createTenant.Email,
             ConnectionString = createTenant.ConnectionString,
-            ValidUpTo = createTenant.ValidUpTo
+            ValidUpTo = createTenant.ValidUpTo,
+            IsActive = createTenant.IsActive            
         };
 
         await tenantStore.TryAddAsync(newTenant);
