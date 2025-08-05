@@ -89,7 +89,7 @@ public class TokenService : ITokenService
         var principal = tokenHandler.ValidateToken(expiringToken, tkValidationParams, out var securityToken);
 
         if (securityToken is not JwtSecurityToken jwtSecurityToken
-            || jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
+            || !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
         {
             throw new UnauthorizedException(["Invalid token provided. Failed to generate a new token."]);
         }
