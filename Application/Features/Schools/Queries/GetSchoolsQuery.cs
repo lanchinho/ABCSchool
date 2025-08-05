@@ -19,7 +19,7 @@ public class GetSchoolsQueryHandler : IRequestHandler<GetSchoolsQuery, IResponse
     {
         var schools = await _schoolService.GetAllsync();
         if (schools == null || schools.Count == 0)
-            return await ResponseWrapper<string>.FailAsync("There are no schools registered");
+            return await ResponseWrapper<List<SchoolResponse>>.FailAsync("There are no schools registered");
 
         return await ResponseWrapper<List<SchoolResponse>>
             .SuccessAsync(data: schools.Adapt<List<SchoolResponse>>(), "");
