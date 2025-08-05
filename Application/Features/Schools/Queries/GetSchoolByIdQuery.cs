@@ -19,6 +19,6 @@ public class GetSchoolByIdQueryHandler(ISchoolService schoolService) : IRequestH
         if (school is not null)
             return await ResponseWrapper<SchoolResponse>.SuccessAsync(data: school.Adapt<SchoolResponse>(), "");
 
-        return await ResponseWrapperForStruct<int>.FailAsync("School does not exist.");
+        return await ResponseWrapper<SchoolResponse>.FailAsync("School does not exist.");
     }
 }

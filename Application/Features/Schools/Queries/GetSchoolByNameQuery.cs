@@ -24,7 +24,7 @@ public class GetSchoolByNameQueryHandler : IRequestHandler<GetSchoolByNameQuery,
         if (school is not null)
             return await ResponseWrapper<SchoolResponse>.SuccessAsync(data: school.Adapt<SchoolResponse>(), "");
 
-        return await ResponseWrapper<string>.FailAsync("School does not exist");
+        return await ResponseWrapper<SchoolResponse>.FailAsync("School does not exist");
     }
 }
 
